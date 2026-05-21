@@ -1,7 +1,25 @@
+[build-system]
+requires = ["setuptools>=82"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "gootsmoji"
 version = "0.1.0"
 description = "Goots is life."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["Pillow>=10.3.0"]
+dependencies = [
+    "Pillow",
+    "playsound3",
+    "requests",
+]
+
+[project.scripts]
+toots = "toots.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["toots*"]
+exclude = ["toots.tests*"]
+
+[tool.setuptools.package-data]
+toots = ["honk-sound.mp3"]
